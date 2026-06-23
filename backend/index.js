@@ -29,6 +29,9 @@ app.get("/api/research/stream", async (req, res) => {
     if (company.length > 100) {
       return res.status(400).json({ error: "Company name too long (max 100 characters)" });
     }
+    if (company.length > 100) {
+      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
+    }
     return res.status(400).json({ error: "Company name is required" });
   }
 
