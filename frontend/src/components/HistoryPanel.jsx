@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { TrendingUp, TrendingDown, Trash2, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from "../config";
 
 function timeAgo(dateStr) {
   if (!dateStr) return "";
@@ -95,7 +95,7 @@ export default function HistoryPanel({ refreshKey, currentCompany, isRunning }) 
 
   useEffect(() => {
     setLoading(true);
-    fetch(`$/api/history`)
+    fetch(`${API_BASE_URL}/api/history`)
       .then((r) => r.json())
       .then((d) => setHistory(Array.isArray(d) ? d : []))
       .catch(() => setHistory([]))
@@ -108,7 +108,7 @@ export default function HistoryPanel({ refreshKey, currentCompany, isRunning }) 
     const remaining = current.filter((h) => h.id !== id);
     historyRef.current = remaining;
     setHistory(remaining);
-    await fetch(`$/api/history/${id}`, { method: "DELETE" });
+    await fetch(`${API_BASE_URL}/api/history/${id}`, { method: "DELETE" });
 
     // Never redirect while research is actively generating
     if (isRunning) return;

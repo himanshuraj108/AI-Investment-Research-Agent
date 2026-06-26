@@ -5,7 +5,7 @@ import ProgressStepper from "../components/ProgressStepper";
 import VerdictCard from "../components/VerdictCard";
 import ResearchSection from "../components/ResearchSection";
 import HistoryPanel from "../components/HistoryPanel";
-
+import { API_BASE_URL } from "../config";
 
 const STEP_ORDER = ["companyInfo", "financials", "marketPosition", "risks", "verdict"];
 
@@ -44,7 +44,7 @@ export default function ResultPage() {
     setVerdict(null);
     setError(null);
 
-    const es = new EventSource(`$/api/research/stream?company=${encodeURIComponent(company)}`);
+    const es = new EventSource(`${API_BASE_URL}/api/research/stream?company=${encodeURIComponent(company)}`);
     esRef.current = es;
 
     es.addEventListener("step_start", (e) => {
@@ -104,7 +104,7 @@ export default function ResultPage() {
 
   const loadCached = async () => {
     try {
-      const res = await fetch(`$/api/research/cached?company=${encodeURIComponent(company)}`);
+      const res = await fetch(`${API_BASE_URL}/api/research/cached?company=${encodeURIComponent(company)}`);
       if (!res.ok) { startResearch(); return; }
       const record = await res.json();
       setFinalData({

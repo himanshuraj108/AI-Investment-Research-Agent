@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { TrendingUp, TrendingDown, ArrowRight, Clock } from "lucide-react";
 import SearchBar from "../components/SearchBar";
 import { useNavigate } from "react-router-dom";
-
+import { API_BASE_URL } from "../config";
 
 function timeAgo(dateStr) {
   if (!dateStr) return "";
@@ -21,7 +21,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`$/api/history`)
+    fetch(`${API_BASE_URL}/api/history`)
       .then((r) => r.json())
       .then((d) => setHistory(Array.isArray(d) ? d : []))
       .catch(() => setHistory([]))
