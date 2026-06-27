@@ -222,11 +222,11 @@ export default function ResultPage() {
 
       {isRunning && (() => {
         const msgs = [
-          "This analysis may take a moment ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â we are pulling live data to ensure every insight is accurate and current",
+          "This analysis may take a moment -- we are pulling live data to ensure every insight is accurate and current",
           "Great research takes time. A full 5-stage pipeline is running to deliver the most reliable perspective possible",
-          "Please hold on ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â real-time financial data, competitive intelligence, and risk factors are being cross-referenced",
+          "Please hold on -- real-time financial data, competitive intelligence, and risk factors are being cross-referenced",
           "Patience is the first virtue of a great investor. Your report is being carefully assembled",
-          "Analysing financials, market position, competitive moats, and risks in real time ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â thank you for your patience",
+          "Analysing financials, market position, competitive moats, and risks in real time -- thank you for your patience",
         ];
         return (
           <div style={{
@@ -281,7 +281,7 @@ export default function ResultPage() {
               { k: "Company", v: company },
               { k: "Status",  v: isDone ? "Complete" : isRunning ? "In Progress" : error ? "Failed" : "Idle" },
               { k: "Steps",   v: `${completedSteps.length} / 5` },
-              { k: "Verdict", v: verdict?.verdict ?? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" },
+              { k: "Verdict", v: verdict?.verdict ?? "-" },
             ].map((row, i, arr) => (
               <div key={row.k} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 0", borderBottom: i < arr.length - 1 ? "1px solid var(--color-border)" : "none" }}>
                 <span style={{ fontSize: 11.5, color: "var(--color-text-muted)" }}>{row.k}</span>
