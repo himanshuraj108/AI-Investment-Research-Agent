@@ -2,7 +2,7 @@
 
 > **InsideIIM × Altuni AI Labs — AI Engineer Intern Assignment**
 
-### 🚀 [Live Demo → aiinvestmentresearchagent.vercel.app](https://aiinvestmentresearchagent.vercel.app)
+### [Live → aiinvestmentresearchagent.vercel.app](https://aiinvestmentresearchagent.vercel.app)
 
 > **Try it now — search any company (Apple, Byju's, TCS, Reliance) and get a full AI investment report in seconds!**
 
