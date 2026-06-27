@@ -49,7 +49,7 @@ function HistoryRow({ item, onDelete, onClick }) {
           <span style={{ fontSize: 11, fontWeight: 700, fontFamily: "var(--font-mono)", color: isInvest ? "var(--color-invest-text)" : "var(--color-pass-text)" }}>
             {item.verdict}
           </span>
-          <span style={{ fontSize: 11, color: "var(--color-text-muted)" }}>ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {item.confidence}%</span>
+          <span style={{ fontSize: 11, color: "var(--color-text-muted)" }}>{'\u00B7'} {item.confidence}%</span>
         </div>
       </div>
 
