@@ -209,7 +209,7 @@ export default function ResultPage() {
           {isRunning && (() => {
             const stepLabels = { companyInfo: "Company Overview", financials: "Financials", marketPosition: "Market Position", risks: "Risk Assessment", verdict: "AI Verdict" };
             const phase = activeStep && tokenSteps.includes(activeStep) ? "Generating" : "Searching";
-            const label = activeStep ? `${phase}: ${stepLabels[activeStep] ?? activeStep}` : "StartingÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦";
+            const label = activeStep ? `${phase}: ${stepLabels[activeStep] ?? activeStep}` : "Starting...";
             return (
               <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: "var(--radius)", background: tokenSteps.includes(activeStep) ? "var(--color-accent-light)" : "#fffbeb", border: `1px solid ${tokenSteps.includes(activeStep) ? "var(--color-accent-border)" : "#fde68a"}` }}>
                 <div className="anim-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: tokenSteps.includes(activeStep) ? "var(--color-accent)" : "#d97706" }} />
@@ -252,7 +252,7 @@ export default function ResultPage() {
                   letterSpacing: "0.01em",
                   paddingRight: 56,
                 }}>
-                  <span style={{ color: "rgba(255,255,255,0.4)", marginRight: 10 }}>ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ÂÃƒÂ¢Ã¢â€šÂ¬Ã‚Â </span>
+                  <span style={{ color: "rgba(255,255,255,0.4)", marginRight: 10 }}>&#8212;&#8212;</span>
                   {msg}
                 </span>
               ))}
@@ -303,7 +303,7 @@ export default function ResultPage() {
           {!verdict && isRunning && !Object.keys(streamData).length && (
             <div className="surface" style={{ padding: "44px 24px", textAlign: "center" }}>
               <div style={{ width: 32, height: 32, borderRadius: "50%", border: "3px solid var(--color-accent-border)", borderTopColor: "var(--color-accent)", margin: "0 auto 14px", animation: "spin 0.8s linear infinite" }} />
-              <p style={{ fontSize: 14, fontWeight: 600, color: "var(--color-text-primary)" }}>Searching for {company}ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦</p>
+              <p style={{ fontSize: 14, fontWeight: 600, color: "var(--color-text-primary)" }}>Searching for {company}...</p>
               <p style={{ fontSize: 12, color: "var(--color-text-muted)", marginTop: 5 }}>Fetching real-time web data</p>
             </div>
           )}
