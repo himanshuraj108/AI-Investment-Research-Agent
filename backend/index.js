@@ -7,7 +7,33 @@ import { saveResearch, getHistory, deleteHistory, getResearchById, getResearchBy
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// ── CORS ──────────────────────────────────────────────────────────────
+const allowedOrigins = [
+  "https://aiinvestmentresearchagent.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman, mobile apps)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin '${origin}' not allowed`));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  credentials: true,
+  optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+};
+
+app.use(cors(corsOptions));
+// Handle all OPTIONS preflight requests
+app.options("*", cors(corsOptions));
+// ─────────────────────────────────────────────────────────────────────
+
 app.use(express.json());
 
 app.get("/api/health", (req, res) => {
@@ -39,7 +65,6 @@ app.get("/api/research/stream", async (req, res) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.flushHeaders();
 
   const send = (event, data) => {
