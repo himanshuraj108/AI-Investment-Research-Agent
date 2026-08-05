@@ -207,3 +207,11 @@ Clicking a past report from **Recent Analyses** loads the full data instantly fr
 ## Deployment Status
 - Backend: Render
 - Frontend: Vercel
+
+---
+
+## Recent Updates
+
+| Date | Update |
+|------|--------|
+| 2026-08-05 | Reviewed pipeline architecture and Supabase caching layer; minor documentation improvements |
