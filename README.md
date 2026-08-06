@@ -214,4 +214,5 @@ Clicking a past report from **Recent Analyses** loads the full data instantly fr
 
 | Date | Update |
 |------|--------|
+| 2026-08-06 | Updated README with project status, deployment links, and documentation refinements |
 | 2026-08-05 | Reviewed pipeline architecture and Supabase caching layer; minor documentation improvements |
