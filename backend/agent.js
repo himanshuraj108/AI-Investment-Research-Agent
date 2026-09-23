@@ -3,8 +3,8 @@ import { StateGraph, START, END } from "@langchain/langgraph";
 import { Annotation } from "@langchain/langgraph";
 import { ChatGroq } from "@langchain/groq";
 
-const makeFastModel = (apiKey) => new ChatGroq({ model: "llama-3.1-8b-instant", temperature: 0.1, apiKey });
-const makeSmartModel = (apiKey) => new ChatGroq({ model: "llama-3.3-70b-versatile", temperature: 0.1, apiKey });
+const makeFastModel  = (apiKey) => new ChatGroq({ model: "qwen/qwen3.8-27b",    temperature: 0.1, apiKey });
+const makeSmartModel = (apiKey) => new ChatGroq({ model: "openai/gpt-oss-20b",  temperature: 0.1, apiKey });
 
 const primaryKey   = process.env.GROQ_API_KEY;
 const fallbackKey  = process.env.GROQ_API_KEY_FALLBACK;
