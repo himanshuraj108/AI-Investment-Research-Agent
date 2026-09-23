@@ -43,22 +43,10 @@ app.get("/api/health", (req, res) => {
 app.get("/api/research/stream", async (req, res) => {
   const company = req.query.company?.trim();
   if (!company) {
-    if (company.length > 100) {
-      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
-    }
-    if (company.length > 100) {
-      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
-    }
-    if (company.length > 100) {
-      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
-    }
-    if (company.length > 100) {
-      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
-    }
-    if (company.length > 100) {
-      return res.status(400).json({ error: "Company name too long (max 100 characters)" });
-    }
     return res.status(400).json({ error: "Company name is required" });
+  }
+  if (company.length > 100) {
+    return res.status(400).json({ error: "Company name too long (max 100 characters)" });
   }
 
 
@@ -70,6 +58,11 @@ app.get("/api/research/stream", async (req, res) => {
   const send = (event, data) => {
     res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
   };
+
+  // Keep-alive ping every 15s to prevent Render's 30s SSE timeout
+  const keepAlive = setInterval(() => {
+    res.write(`: ping\n\n`);
+  }, 15000);
 
   const researchData = { company };
 
@@ -100,10 +93,12 @@ app.get("/api/research/stream", async (req, res) => {
 
     await saveResearch(researchData);
     send("done", { message: "Research complete" });
+    clearInterval(keepAlive);
     res.end();
   } catch (err) {
     console.error("Research agent error:", err);
     send("error", { message: err.message || "Research failed" });
+    clearInterval(keepAlive);
     res.end();
   }
 });
